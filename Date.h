@@ -1,6 +1,8 @@
 #ifndef DATE_H_
 #define DATE_H_
+#include <iostream>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -20,9 +22,9 @@ class Date {
         void setDay(int);
         void setYear(int);
 
-        int const getMonth();
-        int const getDay();
-        int const getYear();
+        const int getMonth();
+        const int getDay();
+        const int getYear();
 
         string print();
 

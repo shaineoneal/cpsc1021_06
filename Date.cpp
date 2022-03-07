@@ -1,5 +1,7 @@
 #include "Date.h"
+#include <iostream>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -19,21 +21,22 @@ void Date::setYear(int) {
 
 }
 
-int const Date::getMonth() 
+// getter functions
+const int Date::getMonth() 
     { return month; }
 
-int const Date::getDay() 
+const int Date::getDay() 
     { return day; }
 
-int const Date::getYear() 
+const int Date::getYear() 
     { return year; }
 
-// Builds and returns a string that is printed into output file
+// builds and returns a string that is printed into output file
 string Date::print() {
 
 }
 
-// Returns true if first date is earlier than second date
+// returns true if first date is earlier than second date
 bool Date::compare(const Date, const Date) {
 
 }

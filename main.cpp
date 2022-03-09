@@ -10,7 +10,7 @@ using namespace std;
 int main(int argc, char const *argv[]) 
 {
     int temp, m, d, y;
-    vector<string> allDates;
+    vector<Date> allDates;
     string line, dateName;
     stringstream ss;
 
@@ -36,8 +36,8 @@ int main(int argc, char const *argv[])
             {
                 ss << line;
                 ss >> m >> d >> y;
-                allDates.push_back(line); 
-                cout << allDates.at(i) << endl;
+                //allDates.push_back(Date()); 
+                cout << m << d << y << endl;
                 //dateName = "d" + to_string(i)
                 //Date  (m, d, y);
             }

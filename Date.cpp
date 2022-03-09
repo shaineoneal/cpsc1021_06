@@ -5,20 +5,18 @@
 
 using namespace std;
 
-const string Date::MONTHS[12] {"January", "February", 
-    "March", "April", "May", "June","July", "August", 
-    "September", "October", "November", "December"};
+const string Date::MONTHS[12] {"JANUARY", "FEBRUARY", 
+    "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", 
+    "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"};
 
-Date::Date(int m, int d, int y) : month{m}, day{d}, year{y} {}
-
-void Date::setMonth(int) {
-
+void Date::setMonth(int m) {
+    month = m;
 }
-void Date::setDay(int) {
-
+void Date::setDay(int d) {
+    day = d;
 }
-void Date::setYear(int) {
-
+void Date::setYear(int y) {
+    year = y;
 }
 
 // getter functions
@@ -33,10 +31,31 @@ const int Date::getYear()
 
 // builds and returns a string that is printed into output file
 string Date::print() {
+    string dateOutput;
+    stringstream ss;
 
+    ss << dateOutput;
+    ss >> month >> day >> year;
+    
+    return dateOutput;
 }
 
 // returns true if first date is earlier than second date
-bool Date::compare(const Date, const Date) {
+bool Date::compare(const Date d1, const Date d2) 
+{
+    bool first = false;
+    if(d1.year < d2.year)
+        { first = true; }
 
+    if(d1.year == d2.year)
+    {
+        if(d1.month == d2.month)
+        {
+            if(d1.day < d2.day)
+                { first = true; }
+        }
+        else if(d1.month < d2.month)
+            { first = true; }
+    }
+    return first;
 }

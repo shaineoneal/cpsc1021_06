@@ -5,7 +5,7 @@ PROGRAM = main.out
 all: $(PROGRAM)
 
 run: $(PROGRAM)
-	./$(PROGRAM) dates.txt
+	./$(PROGRAM) dates.txt output.txt
 
 $(PROGRAM): main.cpp Date.cpp
 	$(COMPILER) $(OPTIONS) main.cpp Date.cpp -o $(PROGRAM)

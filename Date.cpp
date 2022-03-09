@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -31,13 +32,14 @@ const int Date::getYear()
 
 // builds and returns a string that is printed into output file
 string Date::print() {
-    string dateOutput;
     stringstream ss;
+    string monthName;
 
-    ss << dateOutput;
-    ss >> month >> day >> year;
+    monthName = MONTHS[month - 1];
+
+    ss << left << setw(10) << monthName << setw(3) << day << right << setw(5) << year;
     
-    return dateOutput;
+    return ss.str();
 }
 
 // returns true if first date is earlier than second date

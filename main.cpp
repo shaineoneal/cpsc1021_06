@@ -1,6 +1,3 @@
-#include <iostream>
-#include <string>
-#include <sstream>
 #include <vector>
 #include <algorithm>
 #include <fstream>
@@ -10,14 +7,16 @@ using namespace std;
 
 int main(int argc, char const *argv[]) 
 {
-    int temp, m, d, y;
+    int numberLines, m, d, y;
     vector<Date> allDates;
     string line, dateName;
     stringstream ss;
 
+    //opens input file for reading
     ifstream datesInput;
     datesInput.open(argv[1], ios::in);
 
+    //verifies that file was opened properly
     if(!datesInput.is_open()) 
     {
         cout << "Unable to open file."; 
@@ -26,9 +25,9 @@ int main(int argc, char const *argv[])
 
     //takes in first line
     getline(datesInput, line);
-    temp = stoi(line);
+    numberLines = stoi(line);
 
-    for(int i = 0; i < temp; i++) //can't replace temp with stoi(line)
+    for(int i = 0; i < numberLines; i++) 
     {      
             getline(datesInput, line);
             
@@ -42,19 +41,20 @@ int main(int argc, char const *argv[])
                 ss.clear();
             }
     }
+    //close input file
+    datesInput.close();
 
     sort(allDates.begin(), allDates.end(), Date::compare);
 
-
+    //open output file
     ofstream datesOutput;
     datesOutput.open(argv[2]);
     
-    for(int i = 0; i < temp; i++)
+    //print each line into output file
+    for(int i = 0; i < numberLines; i++)
     {
         datesOutput << allDates.at(i).print() << endl;
     }
-
-
 
     return 0;
 }

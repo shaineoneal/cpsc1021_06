@@ -2,6 +2,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <algorithm>
 #include <fstream>
 #include "Date.h"
 
@@ -10,12 +11,12 @@ using namespace std;
 int main(int argc, char const *argv[]) 
 {
     int temp, m, d, y;
-    vector<string> allDates;
+    vector<Date> allDates;
     string line, dateName;
     stringstream ss;
 
     ifstream datesInput;
-    datesInput.open(argv[1]);
+    datesInput.open(argv[1], ios::in);
 
     if(!datesInput.is_open()) 
     {
@@ -36,26 +37,22 @@ int main(int argc, char const *argv[])
             {
                 ss << line;
                 ss >> m >> d >> y;
-                allDates.push_back(line); 
-                cout << allDates.at(i) << endl;
-                //dateName = "d" + to_string(i)
-                //Date  (m, d, y);
+                allDates.push_back(Date(m, d, y)); 
+                
+                ss.clear();
             }
     }
 
+    sort(allDates.begin(), allDates.end(), Date::compare);
 
 
-
-//for(int i = 0; i < allDates.size(); i++)
-//{
-//    stringstream ss;
-//    
-//    ss << allDates.at(i);
-//    ss >> m >> d >> y;
-//    
-//    Date 
-//    cout << m << "     " << d << "     " << y << endl;
-//}
+    ofstream datesOutput;
+    datesOutput.open(argv[2]);
+    
+    for(int i = 0; i < temp; i++)
+    {
+        datesOutput << allDates.at(i).print() << endl;
+    }
 
 
 
